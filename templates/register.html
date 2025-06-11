@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 20;
+            padding: 20;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e9ecef;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-top: 20px;
+            animation: slideIn 1s ease-out;
+        }
+
+        form {
+            background: #fff;
+            max-width: 500px;
+            width: 100%;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+            animation: scaleUp 0.5s ease-out;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-in-out forwards;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+            color: #34495e;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        input[type="text"], 
+        input[type="email"],
+        input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus, 
+        input[type="email"]:focus, 
+        input[type="file"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        input[type="submit"]:active {
+            background-color: #004080;
+            transform: translateY(0);
+        }
+
+        .success-message {
+            text-align: center;
+            color: #28a745;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            font-weight: bold;
+            animation: bounceIn 1.5s ease-in-out;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleUp {
+            0% {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Registration</h1>
+
+    <!-- {% if registered %} -->
+        <div class="success-message">Finally, you are registered!</div>
+    <!-- {% else %} -->
+        <form method="POST" action="{{ url_for('register') }}" enctype="multipart/form-data">
+            <div class="form-container">
+                <label for="student_name">Student Name:</label>
+                <input type="text" id="student_name" name="student_name" placeholder="Enter your full name" required>
+
+                <label for="student_email">Email:</label>
+                <input type="email" id="student_email" name="student_email" placeholder="Enter your email address" required>
+
+                <label for="student_roll_number">Roll Number:</label>
+                <input type="text" id="student_roll_number" name="student_roll_number" placeholder="Enter your roll number" required>
+
+                <label for="student_department">Department:</label>
+                <input type="text" id="student_department" name="student_department" placeholder="Enter your department" required>
+
+                <label for="student_image">Upload Image:</label>
+                <input type="file" id="student_image" name="student_image" accept="image/*" required>
+
+                <input type="submit" value="Register">
+            </div>
+        </form>
+    <!-- {% endif %} -->
+</body>
+</html>
